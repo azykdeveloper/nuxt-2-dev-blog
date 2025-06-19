@@ -7,10 +7,10 @@ const term = ref<string>("");
 <template>
   <UDrawer>
     <UButton
-      label="Search"
       color="neutral"
       variant="subtle"
       trailing-icon="hugeicons:search-01"
+      size="xl"
     />
     <template #content>
       <div class="w-full max-w-3xl mx-auto py-10 px-5">

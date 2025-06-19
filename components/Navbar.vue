@@ -17,13 +17,13 @@ import { navLinks } from "~/constants";
       <div class="hidden md:flex items-center gap-2">
         <NuxtLink
           v-for="navLink in navLinks"
-          :key="navLink.name"
+          :key="navLink.label"
           :to="navLink.route"
           class="hover:bg-blue-400/20 py-1 px-3 rounded-sm cursor-pointer transition-colors flex gap-1 items-center"
           active-class="bg-blue-400/20"
         >
           <UIcon :name="navLink.icon" class="text-primary text-lg" />
-          <span> {{ navLink.name }}</span>
+          <span> {{ navLink.label }}</span>
         </NuxtLink>
       </div>
 
@@ -31,6 +31,7 @@ import { navLinks } from "~/constants";
        <div class="flex items-center gap-2">
          <SharedColorModeButton />
          <SharedSearchDrawer />
+         <SharedDropdownMenu class="md:hidden" />
        </div>
     </div>
   </nav>
