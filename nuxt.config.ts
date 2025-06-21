@@ -15,17 +15,9 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  // ui: {
-  //   theme: {
-  //     colors: [
-  //       "primary",
-  //       "secondary",
-  //       "info",
-  //       "success",
-  //       "warning",
-  //       "error",
-  //       "neutral",
-  //     ],
-  //   },
-  // },
+  runtimeConfig: {
+    public: {
+      graphcmsEndpoint: process.env.NUXT_PUBLIC_GRAPHCMS_ENDPOINT,
+    },
+  },
 });

@@ -24,12 +24,14 @@
       <NuxtLink
         v-for="blog in blogs"
         class="grid gap-4 grid-cols-1 group"
+        :to="`/blogs/${blog.slug}`"
+        
       >
         <div class="relative bg-secondary rounded-md">
           <NuxtImg
             width="650"
             height="335"
-            :src="blog.image"
+            :src="blog.image.url"
             alt="blog image"
             class="px-2 md:px-7 rounded-md group-hover:-translate-y-7 -translate-y-6 transition-all object-cover grayscale group-hover:grayscale-0 max-md:-translate-y-2 max-md:group-hover:-translate-y-3"
           />
@@ -40,7 +42,7 @@
           <div class="flex items-center gap-4">
             <div class="flex items-center gap-2">
               <UIcon name="hugeicons:calendar-03" />
-              <p>{{ blog.date }}</p>
+              <p>{{ new Date(blog.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric'}) }}</p>
             </div>
             <UIcon name="hugeicons:minus-sign" />
             <div class="flex items-center gap-2">
@@ -62,8 +64,8 @@
             <div class="flex items-center gap-2">
               <NuxtImg
                 :src="
-                  blog.author.img
-                    ? blog.author.img
+                  blog?.author?.image?.url
+                    ? blog.author.image.url
                     : 'https://github.com/nuxt.png'
                 "
                 class="w-8 h-8 object-cover rounded-sm"
@@ -75,7 +77,7 @@
 
             <div class="flex items-center gap-2">
               <UBadge variant="soft" class="cursor-pointer">
-                Machine Learning
+                {{ blog.category.name }}
               </UBadge>
             </div>
           </div>
@@ -86,7 +88,8 @@
 </template>
 
 <script setup lang="ts">
-import { blogs } from "~/constants";
+import { getBlogs } from '~/service/blog.service';
+import type { IBlog } from '~/types';
 
 definePageMeta({
   layout: 'default'
@@ -95,4 +98,12 @@ definePageMeta({
 useHead({
   title: "Blogs | Dev Blogs"
 })
+
+const blogs = ref<IBlog[]>([])
+
+onMounted(async () => {
+  const result = await getBlogs() as { blogs: IBlog[] };
+  blogs.value = result.blogs;
+  console.log(result.blogs);
+});
 </script>

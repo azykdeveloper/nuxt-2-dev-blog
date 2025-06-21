@@ -51,57 +51,6 @@ export const tags = [
   { name: "FastAPI", slug: "fastapi" },
 ];
 
-export const blogs: IBlog[] = [
-  {
-    title: "The AGI hype train is running out of steam",
-    description:
-      "While futurists and fundraisers used to make bullish predictions about artificial general intelligence, they’ve become quieter lately. Peter Thiel.",
-    author: {
-      name: "Samar",
-      img: "img/chris-impey.jpg",
-    },
-    date: "Dec 5, 2021",
-    tags: ["Machine learning"],
-    image: "img/01.jpg",
-  },
-  {
-    title: "Creating an object that travels at 1% the speed of light?",
-    description:
-      "Light is fast. In fact, it is the fastest thing that exists, and a law of the universe is that nothing can move faster than light. Light travels.",
-    author: {
-      name: "Emma Hazel",
-      img: "img/emma-hazel.jpg",
-    },
-    tags: ["Front End"],
-    date: "Jan 12, 2021",
-    image: "img/02.jpg",
-  },
-  {
-    title: "Everything you wanted to know about the metaverse",
-    description:
-      "In the wake of Facebook rebranding as Meta, reflecting its focus on the “metaverse”, Microsoft has now announced it, too, will launch into this.",
-    author: {
-      name: "Azizbek",
-      img: "img/thomas-macaulay.jpg",
-    },
-    tags: ["Backend"],
-    date: "June 5, 2022",
-    image: "img/03.jpg",
-  },
-  {
-    title:
-      "How to hire a developer straight out of bootcamp — without getting burned",
-    description:
-      "There’s a worldwide talent shortage in software development, and nearly one-third of hiring managers have hired someone from a coding bootcamp to.",
-    author: {
-      name: "Ozodbek",
-    },
-    tags: ["Full Stack"],
-    date: "Dec 12, 2021",
-    image: "img/04.jpg",
-  },
-];
-
 export const authors = [
   {
     name: "Chris Impey",

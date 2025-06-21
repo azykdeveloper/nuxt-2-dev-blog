@@ -7,11 +7,27 @@ export interface INavLinks {
 export interface IBlog {
   title: string;
   description: string;
+  createdAt: string;
+  slug: string;
   author: {
     name: string;
-    img?: string;
+    bio: string;
+    image: {
+      url: string;
+    };
   };
-  date: string;
-  tags: string[];
-  image: string;
+  tag: {
+    name: string;
+    slug: string;
+  };
+  category: {
+    slug: string;
+    name: string;
+  };
+  image: {
+    url: string;
+  };
+  content: {
+    html: string;
+  };
 }

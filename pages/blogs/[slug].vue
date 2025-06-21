@@ -1,19 +1,19 @@
 <template>
   <div class="pt-[15vh] max-w-5xl mx-auto px-5">
     <h1 class="lg:text-6xl md:text-5xl text-4xl font-header">
-      The AGI hype train is running out of steam
+      {{ blog?.title }}
     </h1>
 
     <div class="flex items-center flex-wrap max-md:justify-center gap-4 mt-4">
       <div class="flex items-center gap-2">
         <NuxtImg
-          src="/img/thomas-macaulay.jpg"
+          :src="blog?.author.image.url"
           alt="author"
           width="30"
           height="30"
           class="object-cover rounded-sm"
         />
-        <p>by Samar</p>
+        <p>by {{ blog?.author.name }}</p>
       </div>
       <UIcon name="hugeicons:minus-sign" />
       <div class="flex items-center gap-2">
@@ -23,12 +23,13 @@
       <UIcon name="hugeicons:minus-sign" />
       <div class="flex items-center gap-2">
         <UIcon name="hugeicons:calendar-03" />
-        <p>Dec 5, 2021</p>
+        <p v-if="blog?.createdAt">{{ new Date(blog.createdAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric"}) }}</p>
+        <p v-else>-</p>
       </div>
     </div>
 
     <NuxtImg
-      src="/img/02.jpg"
+      :src="blog?.image.url"
       alt="alt"
       width="1120"
       height="595"
@@ -71,24 +72,22 @@
         </div>
       </div>
       <div class="flex-1 prose dark:prose-invert">
-        <div v-html="content"></div>
+        <div v-html="blog?.content.html"></div>
       </div>
     </div>
 
     <div class="flex mt-6 gap-6 items-center max-md:flex-col">
       <NuxtImg
-        src="/img/chris-impey.jpg"
+        :src="blog?.author.image.url"
         alt="author"
         width="155"
         height="155"
         class="rounded-md max-md:self-start"
       />
       <div class="flex-1 flex flex-col space-y-4">
-        <h2 class="text-3xl font-header">Thomas Macaulay</h2>
+        <h2 class="text-3xl font-header">{{ blog?.author.name }}</h2>
         <p class="line-clamp-2 text-muted">
-          Thomas Macaulay is a writer based in New York City. He is interested
-          in all things tech, science, and photography related, and likes to
-          yo-yo in
+          {{ blog?.author.bio }}
         </p>
         <NuxtLink
           href="/"
@@ -102,8 +101,10 @@
   </div>
 </template>
 
-<script setup>
-import { content } from '~/constants';
+<script setup lang="ts">
+import { getBlog } from '~/service/blog.service';
+import type { IBlog } from '~/types';
+const route = useRoute();
 
 definePageMeta({
   layout: "default",
@@ -112,6 +113,15 @@ definePageMeta({
 useHead({
   title: "Blogs | Dev Blogs",
 });
+
+const blog = ref<IBlog>();
+
+onMounted(async () => {
+  const result = await getBlog(route.params.slug as string) as { blog: IBlog };
+  blog.value = result.blog;
+  console.log(result.blog);
+});
 </script>
+
 
 <style lang="scss" scoped></style>
