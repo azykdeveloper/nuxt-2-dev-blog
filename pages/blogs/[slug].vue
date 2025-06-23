@@ -6,7 +6,7 @@
 
     <div class="flex items-center flex-wrap max-md:justify-center gap-4 mt-4">
       <div class="flex items-center gap-2">
-        <NuxtImg
+        <img
           :src="blog?.author.image.url"
           alt="author"
           width="30"
@@ -23,12 +23,20 @@
       <UIcon name="hugeicons:minus-sign" />
       <div class="flex items-center gap-2">
         <UIcon name="hugeicons:calendar-03" />
-        <p v-if="blog?.createdAt">{{ new Date(blog.createdAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric"}) }}</p>
+        <p v-if="blog?.createdAt">
+          {{
+            new Date(blog.createdAt).toLocaleDateString("en-US", {
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+            })
+          }}
+        </p>
         <p v-else>-</p>
       </div>
     </div>
 
-    <NuxtImg
+    <img
       :src="blog?.image.url"
       alt="alt"
       width="1120"
@@ -77,7 +85,7 @@
     </div>
 
     <div class="flex mt-6 gap-6 items-center max-md:flex-col">
-      <NuxtImg
+      <img
         :src="blog?.author.image.url"
         alt="author"
         width="155"
@@ -102,8 +110,8 @@
 </template>
 
 <script setup lang="ts">
-import { getBlog } from '~/service/blog.service';
-import type { IBlog } from '~/types';
+import { getBlog } from "~/service/blog.service";
+import type { IBlog } from "~/types";
 const route = useRoute();
 
 definePageMeta({
@@ -117,11 +125,12 @@ useHead({
 const blog = ref<IBlog>();
 
 onMounted(async () => {
-  const result = await getBlog(route.params.slug as string) as { blog: IBlog };
+  const result = (await getBlog(route.params.slug as string)) as {
+    blog: IBlog;
+  };
   blog.value = result.blog;
   console.log(result.blog);
 });
 </script>
-
 
 <style lang="scss" scoped></style>

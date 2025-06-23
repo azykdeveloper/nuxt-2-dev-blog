@@ -9,10 +9,7 @@
 
       <div class="flex gap-1 items-center mt-4">
         <UIcon name="hugeicons:home-03" />
-        <NuxtLink
-          to="/"
-          class="opacity-90 hover:underline hover:opacity-100"
-        >
+        <NuxtLink to="/" class="opacity-90 hover:underline hover:opacity-100">
           Home
         </NuxtLink>
         <UIcon name="ci:dot-03-m" />
@@ -26,7 +23,7 @@
 
     <div class="grid grid-cols-4 gap-4 min-h-96 mt-6">
       <div class="col-span-2 max-md:col-span-4 relative h-80">
-        <NuxtImg
+        <img
           src="/img/a1.jpg"
           alt="about"
           fill
@@ -34,7 +31,7 @@
         />
       </div>
       <div class="h-80 self-end relative max-md:col-span-2 max-md:h-72">
-        <NuxtImg
+        <img
           src="/img/a2.jpg"
           alt="about"
           fill
@@ -42,7 +39,7 @@
         />
       </div>
       <div class="relative h-80 max-md:col-span-2 max-md:mb-8 max-md:h-72">
-        <NuxtImg
+        <img
           src="/img/a3.jpg"
           alt="about"
           fill
@@ -72,12 +69,12 @@
 
 <script setup lang="ts">
 definePageMeta({
-  layout: 'default'
-})
+  layout: "default",
+});
 
 useHead({
-  title: "About | Dev Blogs"
-})
+  title: "About | Dev Blogs",
+});
 </script>
 
 <style scoped></style>

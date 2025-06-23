@@ -1,18 +1,13 @@
 <template>
   <div class="max-w-6xl mx-auto">
-    <div
-      class="relative min-h-[40vh] flex items-center justify-end flex-col"
-    >
+    <div class="relative min-h-[40vh] flex items-center justify-end flex-col">
       <h2 class="text-center text-4xl font-header">
         <span>Blogs</span>
       </h2>
 
       <div class="flex gap-1 items-center mt-4">
         <UIcon name="hugeicons:home-03" />
-        <NuxtLink
-          to="/"
-          class="opacity-90 hover:underline hover:opacity-100"
-        >
+        <NuxtLink to="/" class="opacity-90 hover:underline hover:opacity-100">
           Home
         </NuxtLink>
         <UIcon name="ci:dot-03-m" />
@@ -25,10 +20,9 @@
         v-for="blog in blogs"
         class="grid gap-4 grid-cols-1 group"
         :to="`/blogs/${blog.slug}`"
-        
       >
         <div class="relative bg-secondary rounded-md">
-          <NuxtImg
+          <img
             width="650"
             height="335"
             :src="blog.image.url"
@@ -42,7 +36,15 @@
           <div class="flex items-center gap-4">
             <div class="flex items-center gap-2">
               <UIcon name="hugeicons:calendar-03" />
-              <p>{{ new Date(blog.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric'}) }}</p>
+              <p>
+                {{
+                  new Date(blog.createdAt).toLocaleDateString("en-US", {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                  })
+                }}
+              </p>
             </div>
             <UIcon name="hugeicons:minus-sign" />
             <div class="flex items-center gap-2">
@@ -62,7 +64,7 @@
           <!-- Author -->
           <div class="flex items-center gap-4">
             <div class="flex items-center gap-2">
-              <NuxtImg
+              <img
                 :src="
                   blog?.author?.image?.url
                     ? blog.author.image.url
@@ -88,21 +90,21 @@
 </template>
 
 <script setup lang="ts">
-import { getBlogs } from '~/service/blog.service';
-import type { IBlog } from '~/types';
+import { getBlogs } from "~/service/blog.service";
+import type { IBlog } from "~/types";
 
 definePageMeta({
-  layout: 'default'
-})
+  layout: "default",
+});
 
 useHead({
-  title: "Blogs | Dev Blogs"
-})
+  title: "Blogs | Dev Blogs",
+});
 
-const blogs = ref<IBlog[]>([])
+const blogs = ref<IBlog[]>([]);
 
 onMounted(async () => {
-  const result = await getBlogs() as { blogs: IBlog[] };
+  const result = (await getBlogs()) as { blogs: IBlog[] };
   blogs.value = result.blogs;
   console.log(result.blogs);
 });

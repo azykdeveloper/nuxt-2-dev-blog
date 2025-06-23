@@ -39,7 +39,7 @@ onMounted(async () => {
         :to="`/blogs/${blog.slug}`"
       >
         <div class="relative bg-secondary rounded-md">
-          <NuxtImg
+          <img
             width="650"
             height="335"
             :src="blog.image.url"
@@ -81,7 +81,7 @@ onMounted(async () => {
           <!-- Author -->
           <div class="flex items-center gap-4">
             <div class="flex items-center gap-2">
-              <NuxtImg
+              <img
                 :src="
                   blog?.author?.image?.url
                     ? blog.author.image.url
