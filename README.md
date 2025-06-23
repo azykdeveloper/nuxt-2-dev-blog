@@ -1,75 +1,38 @@
-# Nuxt Minimal Starter
+![https://i.postimg.cc/bwJYKd4K/image.png]
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+# Dev Blog ([demo](https://nuxt-2-dev-blog.netlify.app/))
 
-## Setup
+A developer-focused blog built with **Nuxt 3**, designed to share articles, tutorials, and personal insights.
 
-Make sure to install dependencies:
+
+## 📌 Project Overview
+
+This blog is built using Nuxt 2 for server-side rendering (SSR), SEO optimization, and a better developer experience. It's designed to be:
+
+- 🔍 SEO-friendly
+- 📱 Fully responsive
+- ⚡️ Fast & optimized
+- 💡 Developer-oriented
+
+## 🛠 Tech Stack
+
+- **Nuxt.js**
+- **Vue.js**
+- **TailwindCSS**
+- **Pinia** (State management)
+- **GraphQL** + **Hygraph / CMS**
+- **Appwrite** (optional integration for backend or auth)
+- **Vercel / Netlify** for deployment
+
+## 🚀 Setup & Development
 
 ```bash
-# npm
+# Clone the repository
+git clone https://github.com/azykdeveloper/nuxt-2-dev-blog.git
+cd nuxt-2-dev-blog
+
+# Install dependencies
 npm install
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
+# Start development server
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
