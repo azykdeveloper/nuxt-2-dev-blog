@@ -1,4 +1,4 @@
-![https://i.postimg.cc/bwJYKd4K/image.png]
+![Screenshot](https://i.postimg.cc/bwJYKd4K/image.png)
 
 # Dev Blog ([demo](https://nuxt-2-dev-blog.netlify.app/))
 
